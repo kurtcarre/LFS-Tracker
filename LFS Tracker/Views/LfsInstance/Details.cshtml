@@ -1,0 +1,46 @@
+﻿@model LFS_Tracker.Models.LfsInstance
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>LFS Instance</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.InstanceName)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.InstanceName)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Version)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Version)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.LfsVersion)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.LfsVersion)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.InstalledPackages)
+        </dt>
+        <dd class="col-sm-10">
+            @foreach(var package in Model.InstalledPackages)
+            {
+                <label>@package.PackageName</label>
+                <br />
+            }
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.Id" class="btn btn-primary">Edit</a> 
+    <a asp-action="Index" class="btn btn-primary">Back to List</a>
+</div>

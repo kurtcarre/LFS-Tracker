@@ -1,0 +1,52 @@
+﻿@model LFS_Tracker.Models.Package
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Package</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.PackageName)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.PackageName)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Version)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Version)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.LfsVersion)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.LfsVersion)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.IsCoreLfsPackage)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.IsCoreLfsPackage)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.InstalledInstances)
+        </dt>
+        <dd class="col-sm-10">
+            @foreach(var instance in Model.InstalledInstances)
+            {
+                <label>@instance.InstanceName</label>
+                <br />
+            }
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.PackageId" class="btn btn-primary">Edit</a> 
+    <a asp-action="Index" class="btn btn-primary">Back to List</a>
+</div>

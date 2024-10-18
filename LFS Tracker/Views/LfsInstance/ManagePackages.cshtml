@@ -1,0 +1,64 @@
+﻿@model LFS_Tracker.Controllers.LfsInstanceController.ManagePackageModel
+
+@{
+    ViewData["Title"] = "Manage Packages - " + Model.LfsInstanceName;
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="ManagePackages">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="LfsInstanceId" />
+            <h3>Remove from Instance</h3>
+            <br />
+            <table class="table">
+                <tbody>
+                    @if(Model.InstancePackages.Count == 0)
+                    {
+                        <tr>
+                            <td>There are no packages installed on this instance!</td>
+                        </tr>
+                    }
+                    else
+                    {
+                        @foreach(var package in Model.InstancePackages)
+                        {
+                            <tr>
+                                <td><label for="@package.PackageId">@package.PackageName</label></td>
+                                <td><input type="checkbox" id="@package.PackageId" name="RemovePackages" value="@package.PackageId" /></td>
+                            </tr>
+                        }
+                    }
+                </tbody>
+            </table>
+            <br />
+            <h3>Add as installed on instance</h3>
+            <br />
+            <table class="table">
+                <tbody>
+                    @if (Model.OtherPackages.Count == 0)
+                    {
+                        <tr>
+                            <td>There are no packages left to install on this instance!</td>
+                        </tr>
+                    }
+                    else
+                    {
+                        @foreach (var package in Model.OtherPackages)
+                        {
+                            <tr>
+                                <td><label for="@package.PackageId">@package.PackageName</label></td>
+                                <td><input type="checkbox" id="@package.PackageId" name="AddPackages" value="@package.PackageId" /></td>
+                            </tr>
+                        }
+                    }
+                </tbody>
+            </table>
+            <br />
+            <input type="submit" value="Save" class="btn btn-primary" />
+            <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+        </form>
+    </div>
+</div>
