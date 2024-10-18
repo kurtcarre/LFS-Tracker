@@ -1,5 +1,6 @@
 ﻿using LFS_Tracker.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using System.Diagnostics;
 
 namespace LFS_Tracker.Controllers
